@@ -1,0 +1,976 @@
+2026-07-08 18:49:05,127 | INFO | request_logger.py | dispatch | GET / Status=404 Time=0.001s
+2026-07-08 18:49:05,352 | INFO | request_logger.py | dispatch | GET /favicon.ico Status=404 Time=0.001s
+2026-07-08 18:50:39,288 | INFO | request_logger.py | dispatch | GET /docs Status=200 Time=0.001s
+2026-07-08 18:50:39,874 | INFO | request_logger.py | dispatch | GET /openapi.json Status=200 Time=0.051s
+2026-07-08 18:51:34,063 | INFO | request_logger.py | dispatch | GET /redoc Status=200 Time=0.001s
+2026-07-08 18:51:34,631 | INFO | request_logger.py | dispatch | GET /openapi.json Status=200 Time=0.001s
+2026-07-08 18:52:28,013 | INFO | request_logger.py | dispatch | GET /health/ Status=200 Time=0.038s
+2026-07-08 18:53:25,148 | ERROR | exception_handler.py | global_exception_handler | Unhandled exception: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('string', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: users
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\app\core\request_logger.py", line 20, in dispatch
+    response = await call_next(
+               ^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 120, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 330, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\app\api\auth.py", line 93, in login
+    .first()
+     ^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2766, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2864, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2372, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2270, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('string', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-07-08 18:57:28,415 | INFO | request_logger.py | dispatch | POST /kyc/verify Status=401 Time=0.288s
+2026-07-08 19:05:42,076 | ERROR | exception_handler.py | global_exception_handler | Unhandled exception: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('vedu', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: users
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\app\core\request_logger.py", line 20, in dispatch
+    response = await call_next(
+               ^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 120, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 330, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\app\api\auth.py", line 44, in register_user
+    .first()
+     ^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2766, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2864, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2372, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2270, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('vedu', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-07-08 19:05:52,953 | ERROR | exception_handler.py | global_exception_handler | Unhandled exception: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('vedu', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: users
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\app\core\request_logger.py", line 20, in dispatch
+    response = await call_next(
+               ^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 120, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 330, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\app\api\auth.py", line 44, in register_user
+    .first()
+     ^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2766, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2864, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2372, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2270, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('vedu', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-07-08 19:06:27,698 | ERROR | exception_handler.py | global_exception_handler | Unhandled exception: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('vedu', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: users
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\app\core\request_logger.py", line 20, in dispatch
+    response = await call_next(
+               ^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 120, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 330, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\app\api\auth.py", line 44, in register_user
+    .first()
+     ^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2766, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2864, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2372, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2270, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('vedu', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-07-08 19:07:27,160 | ERROR | exception_handler.py | global_exception_handler | Unhandled exception: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('vedu', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: users
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\app\core\request_logger.py", line 20, in dispatch
+    response = await call_next(
+               ^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 120, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 330, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\app\api\auth.py", line 93, in login
+    .first()
+     ^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2766, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2864, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2372, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2270, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('vedu', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-07-08 19:10:12,306 | ERROR | exception_handler.py | global_exception_handler | Unhandled exception: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('vedu', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: users
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\app\core\request_logger.py", line 20, in dispatch
+    response = await call_next(
+               ^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 120, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 330, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\app\api\auth.py", line 44, in register_user
+    .first()
+     ^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2766, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2864, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2372, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2270, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('vedu', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-07-08 19:29:36,874 | INFO | auth.py | register_user | User registered: vedu
+2026-07-08 19:29:36,876 | INFO | request_logger.py | dispatch | POST /auth/register Status=200 Time=0.841s
+2026-07-08 19:29:59,213 | INFO | auth.py | login | User login: vedu
+2026-07-08 19:29:59,219 | INFO | request_logger.py | dispatch | POST /auth/login Status=200 Time=0.524s
+2026-07-08 19:30:21,634 | INFO | ocr_service.py | extract_text | Starting OCR: uploads/documents\ved_.png
+2026-07-08 19:30:25,071 | INFO | ocr_service.py | extract_text | OCR completed in 3.44s
+2026-07-08 19:30:25,073 | WARNING | aadhaar_service.py | extract_aadhaar | Aadhaar number not found
+2026-07-08 19:30:25,073 | INFO | aadhaar_service.py | extract_kyc_details | Extracted Details: {'name': None, 'dob': None, 'gender': None}
+2026-07-08 19:30:25,075 | INFO | request_logger.py | dispatch | POST /kyc/verify Status=400 Time=3.455s
+2026-07-08 19:33:43,004 | INFO | ocr_service.py | extract_text | Starting OCR: uploads/documents\Screenshot 2026-07-08 193313.png
+2026-07-08 19:33:46,998 | INFO | ocr_service.py | extract_text | OCR completed in 3.99s
+2026-07-08 19:33:46,999 | INFO | aadhaar_service.py | extract_aadhaar | Aadhaar extracted: 123456789012
+2026-07-08 19:33:47,000 | INFO | aadhaar_service.py | extract_kyc_details | Extracted Details: {'name': 'DONALD TRUMP', 'dob': '01/01/1980', 'gender': 'Male'}
+2026-07-08 19:33:47,005 | INFO | face_service.py | verify_faces | Face verification started
+2026-07-08 19:34:01,784 | INFO | face_service.py | verify_faces | Face verification completed in 14.78s
+2026-07-08 19:34:01,787 | INFO | request_logger.py | dispatch | POST /kyc/verify Status=400 Time=18.796s
+2026-07-08 19:36:36,483 | INFO | ocr_service.py | extract_text | Starting OCR: uploads/documents\Screenshot 2026-07-08 193313.png
+2026-07-08 19:36:39,785 | INFO | ocr_service.py | extract_text | OCR completed in 3.3s
+2026-07-08 19:36:39,786 | INFO | aadhaar_service.py | extract_aadhaar | Aadhaar extracted: 123456789012
+2026-07-08 19:36:39,786 | INFO | aadhaar_service.py | extract_kyc_details | Extracted Details: {'name': 'DONALD TRUMP', 'dob': '01/01/1980', 'gender': 'Male'}
+2026-07-08 19:36:39,789 | INFO | face_service.py | verify_faces | Face verification started
+2026-07-08 19:36:40,641 | INFO | face_service.py | verify_faces | Face verification completed in 0.85s
+2026-07-08 19:36:40,668 | INFO | customer_service.py | create_customer | Customer created: 123456789012
+2026-07-08 19:36:40,670 | INFO | request_logger.py | dispatch | POST /kyc/verify Status=200 Time=4.196s
+2026-07-08 19:37:38,908 | INFO | ocr_service.py | extract_text | Starting OCR: uploads/documents\Screenshot 2026-07-08 193313.png
+2026-07-08 19:37:42,215 | INFO | ocr_service.py | extract_text | OCR completed in 3.31s
+2026-07-08 19:37:42,215 | INFO | aadhaar_service.py | extract_aadhaar | Aadhaar extracted: 123456789012
+2026-07-08 19:37:42,216 | INFO | aadhaar_service.py | extract_kyc_details | Extracted Details: {'name': 'DONALD TRUMP', 'dob': '01/01/1980', 'gender': 'Male'}
+2026-07-08 19:37:42,218 | INFO | request_logger.py | dispatch | POST /kyc/verify Status=200 Time=3.32s
+2026-07-08 19:38:31,077 | INFO | ocr_service.py | extract_text | Starting OCR: uploads/documents\Screenshot 2026-07-08 193313.png
+2026-07-08 19:38:34,351 | INFO | ocr_service.py | extract_text | OCR completed in 3.27s
+2026-07-08 19:38:34,351 | INFO | aadhaar_service.py | extract_aadhaar | Aadhaar extracted: 123456789012
+2026-07-08 19:38:34,352 | INFO | aadhaar_service.py | extract_kyc_details | Extracted Details: {'name': 'DONALD TRUMP', 'dob': '01/01/1980', 'gender': 'Male'}
+2026-07-08 19:38:34,355 | INFO | request_logger.py | dispatch | POST /kyc/verify Status=200 Time=3.288s
+2026-07-08 19:39:18,919 | INFO | request_logger.py | dispatch | GET /docs Status=200 Time=0.002s
+2026-07-08 19:39:19,316 | INFO | request_logger.py | dispatch | GET /openapi.json Status=200 Time=0.033s
+2026-07-09 08:04:28,481 | INFO | auth.py | register_user | User registered: ravi
+2026-07-09 08:04:28,482 | INFO | request_logger.py | dispatch | POST /auth/register Status=200 Time=0.63s
+2026-07-09 08:04:45,654 | INFO | auth.py | login | User login: ravi
+2026-07-09 08:04:45,659 | INFO | request_logger.py | dispatch | POST /auth/login Status=200 Time=0.633s
+2026-07-09 08:05:10,277 | INFO | ocr_service.py | extract_text | Starting OCR: uploads/documents\Screenshot 2026-07-08 193313.png
+2026-07-09 08:05:14,205 | INFO | ocr_service.py | extract_text | OCR completed in 3.93s
+2026-07-09 08:05:14,206 | INFO | aadhaar_service.py | extract_aadhaar | Aadhaar extracted: 123456789012
+2026-07-09 08:05:14,206 | INFO | aadhaar_service.py | extract_kyc_details | Extracted Details: {'name': 'DONALD TRUMP', 'dob': '01/01/1980', 'gender': 'Male'}
+2026-07-09 08:05:14,211 | INFO | face_service.py | verify_faces | Face verification started
+2026-07-09 08:05:21,833 | INFO | face_service.py | verify_faces | Face verification completed in 7.62s
+2026-07-09 08:05:21,835 | INFO | request_logger.py | dispatch | POST /kyc/verify Status=400 Time=11.57s
+2026-07-09 09:50:31,164 | INFO | auth.py | register_user | User registered: pasha
+2026-07-09 09:50:31,165 | INFO | request_logger.py | dispatch | POST /auth/register Status=200 Time=0.6s
+2026-07-09 09:50:45,303 | INFO | auth.py | login | User login: pasha
+2026-07-09 09:50:45,305 | INFO | request_logger.py | dispatch | POST /auth/login Status=200 Time=0.518s
+2026-07-09 09:51:16,276 | INFO | ocr_service.py | extract_text | Starting OCR: uploads/documents\Screenshot 2026-07-08 193313.png
+2026-07-09 09:51:19,720 | INFO | ocr_service.py | extract_text | OCR completed in 3.44s
+2026-07-09 09:51:19,721 | INFO | aadhaar_service.py | extract_aadhaar | Aadhaar extracted: 123456789012
+2026-07-09 09:51:19,722 | INFO | aadhaar_service.py | extract_kyc_details | Extracted Details: {'name': 'DONALD TRUMP', 'dob': '01/01/1980', 'gender': 'Male'}
+2026-07-09 09:51:19,726 | INFO | face_service.py | verify_faces | Face verification started
+2026-07-09 09:52:05,303 | INFO | face_service.py | verify_faces | Face verification completed in 45.58s
+2026-07-09 09:52:05,327 | INFO | customer_service.py | create_customer | Customer created with masked aadhaar: XXXX XXXX 9012
+2026-07-09 09:52:05,330 | INFO | request_logger.py | dispatch | POST /kyc/verify Status=200 Time=49.063s
+2026-07-09 09:56:52,525 | INFO | ocr_service.py | extract_text | Starting OCR: uploads/documents\Screenshot 2026-07-08 193313.png
+2026-07-09 09:56:55,952 | INFO | ocr_service.py | extract_text | OCR completed in 3.43s
+2026-07-09 09:56:55,952 | INFO | aadhaar_service.py | extract_aadhaar | Aadhaar extracted: 123456789012
+2026-07-09 09:56:55,953 | INFO | aadhaar_service.py | extract_kyc_details | Extracted Details: {'name': 'DONALD TRUMP', 'dob': '01/01/1980', 'gender': 'Male'}
+2026-07-09 09:56:55,956 | INFO | request_logger.py | dispatch | POST /kyc/verify Status=200 Time=3.453s
+2026-07-09 10:50:53,530 | INFO | audit_service.py | log_action | AUDIT | action=register status=success user=shreyas ip=127.0.0.1 details=None
+2026-07-09 10:50:53,530 | INFO | auth.py | register_user | User registered: shreyas
+2026-07-09 10:50:53,531 | INFO | request_logger.py | dispatch | POST /auth/register Status=200 Time=0.554s
+2026-07-09 10:51:11,706 | INFO | audit_service.py | log_action | AUDIT | action=login status=success user=shreyas ip=127.0.0.1 details=None
+2026-07-09 10:51:11,710 | INFO | auth.py | login | User login: shreyas
+2026-07-09 10:51:11,712 | INFO | request_logger.py | dispatch | POST /auth/login Status=200 Time=0.491s
+2026-07-09 10:51:38,421 | INFO | ocr_service.py | extract_text | Starting OCR: uploads/documents\Screenshot 2026-07-08 193313.png
+2026-07-09 10:51:41,768 | INFO | ocr_service.py | extract_text | OCR completed in 3.35s
+2026-07-09 10:51:41,769 | INFO | aadhaar_service.py | extract_aadhaar | Aadhaar extracted: 123456789012
+2026-07-09 10:51:41,770 | INFO | aadhaar_service.py | extract_kyc_details | Extracted Details: {'name': 'DONALD TRUMP', 'dob': '01/01/1980', 'gender': 'Male'}
+2026-07-09 10:51:41,775 | INFO | face_service.py | verify_faces | Face verification started
+2026-07-09 10:52:10,439 | INFO | face_service.py | verify_faces | Face verification completed in 28.66s
+2026-07-09 10:52:10,446 | ERROR | exception_handler.py | global_exception_handler | Unhandled exception: 'str' object has no attribute 'username'
+Traceback (most recent call last):
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\app\core\request_logger.py", line 20, in dispatch
+    response = await call_next(
+               ^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 120, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 330, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\app\api\kyc.py", line 167, in verify_kyc
+    username=current_user.username,
+             ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'username'
+2026-07-09 10:52:24,975 | INFO | ocr_service.py | extract_text | Starting OCR: uploads/documents\Screenshot 2026-07-08 193313.png
+2026-07-09 10:52:27,945 | INFO | ocr_service.py | extract_text | OCR completed in 2.97s
+2026-07-09 10:52:27,945 | INFO | aadhaar_service.py | extract_aadhaar | Aadhaar extracted: 123456789012
+2026-07-09 10:52:27,946 | INFO | aadhaar_service.py | extract_kyc_details | Extracted Details: {'name': 'DONALD TRUMP', 'dob': '01/01/1980', 'gender': 'Male'}
+2026-07-09 10:52:27,947 | INFO | face_service.py | verify_faces | Face verification started
+2026-07-09 10:52:46,377 | INFO | face_service.py | verify_faces | Face verification completed in 18.43s
+2026-07-09 10:52:46,389 | INFO | customer_service.py | create_customer | Customer created with masked aadhaar: XXXX XXXX 9012
+2026-07-09 10:52:46,391 | ERROR | exception_handler.py | global_exception_handler | Unhandled exception: 'str' object has no attribute 'username'
+Traceback (most recent call last):
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\app\core\request_logger.py", line 20, in dispatch
+    response = await call_next(
+               ^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 120, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 330, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\app\api\kyc.py", line 191, in verify_kyc
+    username=current_user.username,
+             ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'username'
+2026-07-09 11:03:58,061 | INFO | audit_service.py | log_action | AUDIT | action=login status=failed user=vedu ip=127.0.0.1 details=User not found
+2026-07-09 11:03:58,063 | INFO | request_logger.py | dispatch | POST /auth/login Status=401 Time=0.025s
+2026-07-09 11:04:27,621 | INFO | audit_service.py | log_action | AUDIT | action=register status=success user=vedu ip=127.0.0.1 details=None
+2026-07-09 11:04:27,622 | INFO | auth.py | register_user | User registered: vedu
+2026-07-09 11:04:27,623 | INFO | request_logger.py | dispatch | POST /auth/register Status=200 Time=0.514s
+2026-07-09 11:04:37,544 | INFO | audit_service.py | log_action | AUDIT | action=login status=success user=vedu ip=127.0.0.1 details=None
+2026-07-09 11:04:37,547 | INFO | auth.py | login | User login: vedu
+2026-07-09 11:04:37,549 | INFO | request_logger.py | dispatch | POST /auth/login Status=200 Time=0.455s
+2026-07-09 11:05:06,753 | INFO | ocr_service.py | extract_text | Starting OCR: uploads/documents\Screenshot 2026-07-08 193313.png
+2026-07-09 11:05:09,840 | INFO | ocr_service.py | extract_text | OCR completed in 3.09s
+2026-07-09 11:05:09,841 | INFO | aadhaar_service.py | extract_aadhaar | Aadhaar extracted: 123456789012
+2026-07-09 11:05:09,841 | INFO | aadhaar_service.py | extract_kyc_details | Extracted Details: {'name': 'DONALD TRUMP', 'dob': '01/01/1980', 'gender': 'Male'}
+2026-07-09 11:05:09,847 | ERROR | exception_handler.py | global_exception_handler | Unhandled exception: 'str' object has no attribute 'username'
+Traceback (most recent call last):
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\app\core\request_logger.py", line 20, in dispatch
+    response = await call_next(
+               ^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 120, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\fastapi\routing.py", line 330, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI-Powered_e-KYC_Verification_System-main\app\api\kyc.py", line 137, in verify_kyc
+    username=current_user.username,
+             ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'username'
+2026-07-09 11:19:35,467 | INFO | ocr_service.py | extract_text | Starting OCR: uploads/documents\Screenshot 2026-07-08 193313.png
+2026-07-09 11:19:38,535 | INFO | ocr_service.py | extract_text | OCR completed in 3.07s
+2026-07-09 11:19:38,535 | INFO | aadhaar_service.py | extract_aadhaar | Aadhaar extracted: 123456789012
+2026-07-09 11:19:38,536 | INFO | aadhaar_service.py | extract_kyc_details | Extracted Details: {'name': 'DONALD TRUMP', 'dob': '01/01/1980', 'gender': 'Male'}
+2026-07-09 11:19:38,560 | INFO | audit_service.py | log_action | AUDIT | action=kyc_verify status=duplicate user=vedu ip=127.0.0.1 details=Customer already registered
+2026-07-09 11:19:38,565 | INFO | request_logger.py | dispatch | POST /kyc/verify Status=200 Time=3.121s
